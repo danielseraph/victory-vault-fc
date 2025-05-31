@@ -1,0 +1,180 @@
+<header
+  [ngClass]="{
+    'sticky top-0 z-50 transition-all duration-300 bg-white shadow-lg':
+      !isScrolled,
+    'sticky top-0 z-50 transition-all duration-300 bg-red-600 text-white':
+      isScrolled
+  }"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between py-3">
+      <!-- Logo and Nav -->
+      <div class="flex items-center space-x-4 md:space-x-8">
+        <a routerLink="/" class="flex items-center">
+          <img
+            src="/logo.jpg"
+            alt="Victory Vault Logo"
+            width="48"
+            height="48"
+            class="w-10 md:w-12 h-10 md:h-12"
+          />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav
+          class="hidden xl:flex space-x-6 2xl:space-x-8 font-medium group cursor-pointer"
+        >
+          <a
+            routerLink="/news"
+            class="nav-link hover:text-red-600 transition-colors"
+            >NEWS</a
+          >
+          <a
+            routerLink="/videos"
+            class="nav-link hover:text-red-600 transition-colors"
+            >VIDEO</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >SHOP</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >TEAMS</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >MATCHES</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >TICKETS</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >MEMBERSHIP</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >HISTORY</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >CLUB</a
+          >
+          <a
+            routerLink="#"
+            class="nav-link hover:text-red-600 transition-colors"
+            >SUPPORTERS</a
+          >
+        </nav>
+      </div>
+
+      <!-- Right Side -->
+      <div class="flex items-center space-y-2 md:space-4">
+        <div class="flex items-center space-x-5">
+          <button class="btn-icon">
+            <span class="pi pi-search"></span>
+          </button>
+          <button class="btn-icon"><span class="pi pi-user"></span></button>
+          <button
+            class="btn-icon xl:hidden hover:bg-gray-100 p-2 transition-colors duration-200 rounded-xl"
+            (click)="toggleMobileMenu()"
+          >
+            <i class="pi pi-bars"></i>
+          </button>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-2">
+          <img
+            src="/assets/placeholder.svg"
+            alt="AGR"
+            width="35"
+            height="25"
+            class="md:w-10 md:h-7"
+          />
+          <img
+            src="/assets/placeholder.svg"
+            alt="Local Sponsor"
+            width="35"
+            height="25"
+            class="md:w-10 md:h-7"
+          />
+          <img
+            src="/assets/placeholder.svg"
+            alt="Community Partner"
+            width="35"
+            height="25"
+            class="md:w-10 md:h-7"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      *ngIf="isMobileMenuOpen"
+      class="xl:hidden border-t font-medium border-gray-200 py-4"
+    >
+      <nav class="flex flex-col space-y-4">
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >NEWS</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >VIDEO</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >SHOP</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >TEAMS</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >MATCHES</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >TICKETS</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >MEMBERSHIP</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >HISTORY</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >CLUB</a
+        >
+        <a
+          routerLink="#"
+          class="hover:text-red-600 active:text-red-700 shadow-lg p-4"
+          >SUPPORTERS</a
+        >
+      </nav>
+    </div>
+  </div>
+</header>

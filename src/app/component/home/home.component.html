@@ -1,0 +1,177 @@
+<section class="relative h-screen overflow-hidden">
+  <div class="absolute inset-0">
+    <img
+      src="/GroupPic.jpg"
+      alt="Victory Vault Team Photo"
+      class="object-cover w-full h-full absolute"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+    ></div>
+  </div>
+
+  <div class="relative z-10 h-full flex items-end">
+    <div class="container mx-auto px-4 pb-12 md:pb-20">
+      <div class="max-w-4xl">
+        <div class="animate-fade-in-up">
+          <span
+            class="inline-block mb-4 bg-red-600 text-white text-xs md:text-sm px-3 md:px-4 py-1 md:py-2 rounded"
+          >
+            VICTORY VAULT FOOTBALL CLUB
+          </span>
+
+          <h1
+            class="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-4 md:mb-6 leading-tight"
+          >
+            TOGETHER WE RISE
+          </h1>
+
+          <p class="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl">
+            Victory Vault: A new force in football. Join us as we build a legacy
+            of passion, determination, and unyielding spirit.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="bg-red-600 hover:bg-red-700 text-white px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto flex items-center justify-center"
+            >
+              <svg
+                class="mr-2 h-4 md:h-5 w-4 md:w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M6 4l10 6-10 6V4z" />
+              </svg>
+              Watch Team Story
+            </button>
+
+            <button
+              class="border border-white text-white hover:bg-white hover:text-black px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto flex items-center justify-center"
+            >
+              Meet The Squad
+              <svg
+                class="ml-2 h-4 md:h-5 w-4 md:w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M10 4l6 6-6 6M4 10h12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-12 md:py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div
+      class="flex flex-col md:flex-row md:items-center justify-between mb-8 md:mb-12"
+    >
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-0">
+        First Team Squad
+      </h2>
+
+      <button
+        class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-full md:w-auto flex items-center justify-center px-4 py-2 rounded"
+      >
+        View Full Squad
+        <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 4l6 6-6 6M4 10h12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+      <ng-container *ngFor="let player of players">
+        <div
+          class="group hover:shadow-lg transition-all duration-300 cursor-pointer rounded border"
+        >
+          <div class="p-3 md:p-4">
+            <div
+              class="aspect-square bg-gray-200 rounded-lg mb-3 overflow-hidden"
+            >
+              <img
+                [src]="'/assets/placeholder.svg'"
+                [alt]="'Player ' + player"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <h3
+              class="font-semibold text-sm md:text-base text-gray-900 group-hover:text-red-600 transition-colors"
+            >
+              Player Name
+            </h3>
+            <p class="text-xs md:text-sm text-gray-500">Position</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<section class="py-12 md:py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div
+      class="flex flex-col md:flex-row md:items-center justify-between mb-8 md:mb-12"
+    >
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-0">
+        Latest Videos
+      </h2>
+      <button
+        class="border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-full md:w-auto flex items-center justify-center px-4 py-2 rounded border"
+      >
+        Victory Vault Player
+        <svg class="ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M6 4l10 6-10 6V4z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <ng-container *ngFor="let video of videos">
+        <div
+          class="group active:shadow-[0_4px_12px_rgba(220,38,38,0.5)] hover:shadow-[0_4px_12px_rgba(220,38,38,0.5)] transition-all duration-300 cursor-pointer overflow-hidden border rounded"
+        >
+          <div class="relative" (click)="playVideo(videoRef)">
+            <div class="aspect-video bg-gray-200 relative overflow-hidden">
+              <video
+                #videoRef
+                [src]="video.thumbnail"
+                class="w-full h-full object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-300"
+              ></video>
+              <div
+                class="absolute inset-0 bg-black/20 group-hover:bg-black/10 group-active:bg-black/10 transition-colors duration-300"
+              ></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-12 h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 group-active:scale-110 transition-transform duration-300"
+                >
+                  <svg
+                    class="w-6 h-6 md:w-8 md:h-8 text-white ml-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M6 4l10 6-10 6V4z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute top-4 left-4 bg-red-600 text-white text-xs px-2 py-1 rounded"
+            >
+              HIGHLIGHTS
+            </div>
+          </div>
+          <div class="p-4 md:p-6">
+            <h3
+              class="text-lg md:text-xl font-semibold text-gray-900 group-hover:text-red-600 group-active:text-red-600 transition-colors mb-2"
+            >
+              {{ video.title }}
+            </h3>
+            <p class="text-sm text-gray-500">{{ video.timeAgo }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
