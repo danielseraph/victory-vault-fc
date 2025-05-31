@@ -39,4 +39,10 @@ export class HomeComponent {
     // Play selected video
     videoElement.play();
   }
+   products = [
+    { name: 'Home Jersey 24/25', price: '£75', category: 'JERSEYS' },
+    { name: 'Away Jersey 24/25', price: '£75', category: 'JERSEYS' },
+    { name: 'Training Top', price: '£45', category: 'TRAINING' },
+    { name: 'Victory Vault Scarf', price: '£20', category: 'ACCESSORIES' },
+  ];
 }
