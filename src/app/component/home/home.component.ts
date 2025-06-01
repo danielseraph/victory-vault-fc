@@ -9,7 +9,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
 
-       players = [1, 2, 3, 4, 5, 6];
+       players = [
+        {image: '/Micha.jpg', name: 'Kilete Micha', position: 'Midfielder', age: 25},
+        {image: '/Jasper.jpg', name: 'Ebe Jasper', position: 'Forward', age: 27},
+        {image: '/Stanley.jpg', name: 'Obiene Stanley', position: 'Stiker', age: 24},
+        {image: '/Talent.jpg', name: 'Obiene Talent', position: 'Forward', age: 28},
+       ];
 
      videos = [
     {
@@ -40,9 +45,14 @@ export class HomeComponent {
     videoElement.play();
   }
    products = [
-    { name: 'Home Jersey 24/25', price: '£75', category: 'JERSEYS' },
-    { name: 'Away Jersey 24/25', price: '£75', category: 'JERSEYS' },
-    { name: 'Training Top', price: '£45', category: 'TRAINING' },
-    { name: 'Victory Vault Scarf', price: '£20', category: 'ACCESSORIES' },
+    {image: '/club jess.jpg', name: 'Home Jersey 24/25', price: '£75', category: 'JERSEYS'},
+    {image: '/club jess1.jpg', name: 'Away Jersey 24/25', price: '£75', category: 'JERSEYS'},
+  ];
+
+  socialMedia = [
+    { platform: 'Instagram', followers: '16.2K',icon:'pi pi-instagram', handle: '@victoryvault', link:'https://www.instagram.com/victory_vaultfc?igsh=Z284cXp5ejl3MGtk'},
+    { platform: 'X', followers: '20.1K',icon:'pi pi-twitter', handle: '@VictoryVault' },
+    { platform: 'Facebook', followers: '40.2K',icon:'pi pi-facebook', handle: 'Victory Vault', link:'https://www.facebook.com/share/1HYXxxWiQ9/?mibextid=wwXIfr' },
+    { platform: 'YouTube', followers: '4.8K',icon: 'pi pi-youtube', handle: 'Victory Vault' },
   ];
 }

@@ -63,6 +63,8 @@
     </div>
   </div>
 </section>
+
+<!-- Player Section -->
 <section class="py-12 md:py-16 bg-white">
   <div class="container mx-auto px-4">
     <div
@@ -82,27 +84,33 @@
       </button>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6">
       <ng-container *ngFor="let player of players">
         <div
           class="group hover:shadow-lg transition-all duration-300 cursor-pointer rounded border"
         >
-          <div class="p-3 md:p-4">
-            <div
-              class="aspect-square bg-gray-200 rounded-lg mb-3 overflow-hidden"
-            >
-              <img
-                [src]="'/assets/placeholder.svg'"
-                [alt]="'Player ' + player"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+          <div
+            class="group hover:shadow-xl transition-all duration-500 cursor-pointer rounded border"
+          >
+            <div class="p-3 md:p-4">
+              <div
+                class="aspect-square bg-gray-200 rounded-xl mb-3 overflow-hidden transform transition-transform duration-500 group-hover:scale-105 animate-fade-in-up"
+              >
+                <img
+                  [src]="player.image"
+                  [alt]="'Player ' + player.name"
+                  class="w-full h-full md:h-120 object-cover transition-transform duration-500"
+                />
+              </div>
+              <h3
+                class="font-semibold text-base md:text-lg text-gray-900 group-hover:text-red-600 transition-colors"
+              >
+                {{ player.name }}
+              </h3>
+              <p class="text-sm text-gray-500">
+                {{ player.position }}
+              </p>
             </div>
-            <h3
-              class="font-semibold text-sm md:text-base text-gray-900 group-hover:text-red-600 transition-colors"
-            >
-              Player Name
-            </h3>
-            <p class="text-xs md:text-sm text-gray-500">Position</p>
           </div>
         </div>
       </ng-container>
@@ -110,6 +118,7 @@
   </div>
 </section>
 
+<!-- video section -->
 <section class="py-12 md:py-16 bg-gray-50">
   <div class="container mx-auto px-4">
     <div
@@ -206,21 +215,19 @@
       </button>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
       <div
         *ngFor="let product of products"
-        class="group hover:shadow-lg transition-all duration-300 cursor-pointer rounded-lg border"
+        class="group hover:shadow-xl transition-all duration-500 cursor-pointer rounded-xl border"
       >
-        <div class="p-3 md:p-4">
+        <div class="p-2 md:p-3">
           <div
-            class="aspect-square bg-gray-200 rounded-lg mb-3 overflow-hidden"
+            class="aspect-square bg-gray-200 rounded-xl mb-3 overflow-hidden transform transition-transform duration-500 group-hover:scale-105 animate-zoom-in"
           >
             <img
-              src="/mica.jpg"
+              src="{{ product.image }}"
               alt="{{ product.name }}"
-              width="200"
-              height="200"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              class="mb-2 w-full h-100 md:h-230 object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
           <span
@@ -234,6 +241,43 @@
             {{ product.name }}
           </h3>
           <p class="text-lg font-bold text-red-600">{{ product.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- social media section -->
+<section class="py-12 md:py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-8 md:mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Follow Victory Vault
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Stay connected with the latest updates, behind-the-scenes content, and
+        exclusive Victory Vault content
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+      <div
+        *ngFor="let social of socialMedia"
+        class="text-center hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white rounded-lg"
+      >
+        <div class="p-4 md:p-6">
+          <div
+            class="w-12 h-12 md:w-16 md:h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-3"
+          >
+            <i class="{{ social.icon }}" style="font-size: 2.5rem"></i>
+          </div>
+          <h3 class="font-semibold text-base md:text-lg text-gray-900 mb-1">
+            {{ social.platform }}
+          </h3>
+          <a href="{{ social.link }}" class="text-sm text-gray-500 mb-1">{{
+            social.handle
+          }}</a>
+          <p class="text-lg font-bold text-red-600">{{ social.followers }}</p>
         </div>
       </div>
     </div>
