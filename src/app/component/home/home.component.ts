@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
 
        players = [
-        {image: '/Micha.jpg', name: 'Kilete Micha', position: 'Midfielder', age: 25},
-        {image: '/Jasper.jpg', name: 'Ebe Jasper', position: 'Forward', age: 27},
+        {image: '/Micha.jpg', name: 'Kilete Micah', position: 'Midfielder', age: 25},
+        {image: '/Jasper.jpg', name: 'Ebe Jasper', position: 'Striker', age: 27},
         {image: '/Stanley.jpg', name: 'Obiene Stanley', position: 'Stiker', age: 24},
         {image: '/Talent.jpg', name: 'Obiene Talent', position: 'Forward', age: 28},
        ];
