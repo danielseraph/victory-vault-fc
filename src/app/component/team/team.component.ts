@@ -15,13 +15,13 @@ export class TeamComponent {
    players: Players[] = [
     {
       id: 1,
-      name: 'Marcus Johnson',
-      position: 'Goalkeeper',
-      number: 1,
+      name: 'Ebe Jasper',
+      position: 'Striker',
+      number: 9,
       age: 28,
-      nationality: 'England',
-      image: '/placeholder.svg?height=300&width=250',
-      stats: { appearances: 45, cleanSheets: 18, saves: 142 },
+      nationality: 'Nigeria',
+      image: '/Jasper.jpg',
+      stats: { appearances: 10, goals:30, assists:5},
     },
     {
       id: 2,
