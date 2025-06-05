@@ -98,7 +98,8 @@
       >
         <a
           *ngFor="let player of filteredPlayers"
-          [routerLink]="['/player', player.id]"
+          routerLink="/player/{{ player.id }}"
+            [attr.aria-label]="'View ' + player.name + ' profile'"
           class="group hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden block"
         >
           <div class="aspect-[4/5] bg-gray-200 relative overflow-hidden">

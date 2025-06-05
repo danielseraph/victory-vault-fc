@@ -24,7 +24,7 @@ export const routes: Routes = [
         component:VideoComponent
     },
     {
-        path: 'player',
+        path: 'player/:id',
         component:PlayerComponent
     },
     {
