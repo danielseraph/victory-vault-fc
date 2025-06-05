@@ -1,0 +1,261 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="bg-white border-b">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex items-center space-x-4 mb-4">
+        <a
+          routerLink="/teams"
+          class="flex items-center text-gray-500 hover:text-red-600 transition-colors"
+        >
+          <i class="lucide lucide-arrow-left h-4 w-4 mr-2"></i>
+          Back to Teams
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-red-600 to-red-800 text-white">
+    <div
+      class="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center"
+    >
+      <div>
+        <div class="flex items-center space-x-4 mb-4">
+          <span
+            class="bg-white text-red-600 font-bold text-2xl px-4 py-2 rounded"
+            >{{ player.number }}</span
+          >
+          <img
+            [src]="'/placeholder.svg?height=32&width=48'"
+            [alt]="player.nationality"
+            class="rounded"
+          />
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">{{ player.name }}</h1>
+        <p class="text-xl mb-4">{{ player.position }}</p>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div><span class="text-red-200">Age:</span> {{ player.age }}</div>
+          <div>
+            <span class="text-red-200">Height:</span> {{ player.height }}
+          </div>
+          <div>
+            <span class="text-red-200">Weight:</span> {{ player.weight }}
+          </div>
+          <div>
+            <span class="text-red-200">Nationality:</span>
+            {{ player.nationality }}
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <img
+          [src]="player.image || '/placeholder.svg'"
+          [alt]="player.name"
+          width="300"
+          height="400"
+          class="rounded-lg shadow-2xl"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-4 py-8 grid lg:grid-cols-3 gap-8">
+    <!-- Left Column -->
+    <div class="lg:col-span-2 space-y-8">
+      <!-- Bio -->
+      <div class="bg-white shadow rounded">
+        <div class="p-4 border-b text-lg font-semibold flex items-center">
+          <i class="lucide lucide-trophy h-5 w-5 mr-2 text-red-600"></i>
+          Player Biography
+        </div>
+        <div class="p-4 text-gray-700 leading-relaxed">
+          {{ player.bio }}
+        </div>
+      </div>
+
+      <!-- Season Stats -->
+      <div class="bg-white shadow rounded">
+        <div class="p-4 border-b text-lg font-semibold flex items-center">
+          <i class="lucide lucide-trending-up h-5 w-5 mr-2 text-red-600"></i>
+          2024/25 Season Statistics
+        </div>
+        <div class="p-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-2xl font-bold">{{ player.stats.appearances }}</div>
+            <div class="text-sm text-gray-500">Appearances</div>
+          </div>
+
+          <!-- Position-specific -->
+          <ng-container *ngIf="player.position === 'Goalkeeper'; else outfield">
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-bold">
+                {{ player.stats.cleanSheets ?? 0 }}
+              </div>
+              <div class="text-sm text-gray-500">Clean Sheets</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-bold">
+                {{ player.stats.saves ?? 0 }}
+              </div>
+              <div class="text-sm text-gray-500">Saves</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-bold">{{ player.stats.saves }}%</div>
+              <div class="text-sm text-gray-500">Save %</div>
+            </div>
+          </ng-container>
+
+          <ng-template #outfield>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-bold">
+                {{ player.stats.goals ?? 0 }}
+              </div>
+              <div class="text-sm text-gray-500">Goals</div>
+            </div>
+            <div class="text-center p-4 bg-gray-50 rounded-lg">
+              <div class="text-2xl font-bold">
+                {{ player.stats.assists ?? 0 }}
+              </div>
+              <div class="text-sm text-gray-500">Assists</div>
+            </div>
+            <div
+              *ngIf="player.stats.passAccuracy"
+              class="text-center p-4 bg-gray-50 rounded-lg"
+            >
+              <div class="text-2xl font-bold">
+                {{ player.stats.passAccuracy }}%
+              </div>
+              <div class="text-sm text-gray-500">Pass Accuracy</div>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- More stats -->
+        <div class="p-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+          <ng-container
+            *ngFor="
+              let stat of [
+                'tackles',
+                'aerialWins',
+                'keyPasses',
+                'dribbles',
+                'shots',
+                'blocks'
+              ]
+            "
+          >
+            <div
+              *ngIf="getStatValue(stat)"
+              class="text-center p-3 bg-white border rounded-lg"
+            >
+              <div class="font-bold">{{ getStatValue(stat) }}</div>
+              <div class="text-xs text-gray-500">{{ stat | titlecase }}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Career Stats -->
+      <div class="bg-white shadow rounded">
+        <div class="p-4 border-b text-lg font-semibold">Career Statistics</div>
+        <div class="p-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center p-4 bg-red-50 rounded-lg">
+            <div class="text-2xl font-bold text-red-600">
+              {{ player.stats.appearances }}
+            </div>
+            <div class="text-sm text-gray-500">Total Apps</div>
+          </div>
+          <ng-container
+            *ngIf="player.position === 'Goalkeeper'; else fieldStats"
+          >
+            <div class="text-center p-4 bg-red-50 rounded-lg">
+              <div class="text-2xl font-bold text-red-600">
+                {{ player.stats.cleanSheets }}
+              </div>
+              <div class="text-sm text-gray-500">Total Clean Sheets</div>
+            </div>
+            <div class="text-center p-4 bg-red-50 rounded-lg">
+              <div class="text-2xl font-bold text-red-600">
+                {{ player.stats.saves }}
+              </div>
+              <div class="text-sm text-gray-500">Total Saves</div>
+            </div>
+          </ng-container>
+          <ng-template #fieldStats>
+            <div class="text-center p-4 bg-red-50 rounded-lg">
+              <div class="text-2xl font-bold text-red-600">
+                {{ player.stats.goals }}
+              </div>
+              <div class="text-sm text-gray-500">Total Goals</div>
+            </div>
+            <div class="text-center p-4 bg-red-50 rounded-lg">
+              <div class="text-2xl font-bold text-red-600">
+                {{ player.stats.assists }}
+              </div>
+              <div class="text-sm text-gray-500">Total Assists</div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="space-y-6">
+      <!-- Player Info -->
+      <div class="bg-white rounded shadow">
+        <div class="p-4 border-b font-semibold flex items-center">
+          <i class="lucide lucide-calendar h-5 w-5 mr-2 text-red-600"></i>
+          Player Information
+        </div>
+        <div class="p-4 space-y-4 text-sm">
+          <div class="flex justify-between">
+            <span>Joined:</span
+            ><span class="font-semibold">{{ player.joinedDate }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Contract Until:</span
+            ><span class="font-semibold">{{ player.contract }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Squad Number:</span
+            ><span class="font-semibold">#{{ player.number }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Position:</span
+            ><span class="font-semibold">{{ player.position }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Previous Clubs -->
+      <div class="bg-white rounded shadow">
+        <div class="p-4 border-b font-semibold flex items-center">
+          <i class="lucide lucide-map-pin h-5 w-5 mr-2 text-red-600"></i>
+          Previous Clubs
+        </div>
+        <div class="p-4 space-y-2">
+          <div
+            *ngFor="let club of player.previousClubs"
+            class="p-3 bg-gray-50 rounded-lg"
+          >
+            {{ club }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="bg-white rounded shadow p-6 space-y-3">
+        <button
+          class="w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+        >
+          Follow Player
+        </button>
+        <button class="w-full border py-2 px-4 rounded">Share Profile</button>
+        <button class="w-full border py-2 px-4 rounded">
+          View Match History
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

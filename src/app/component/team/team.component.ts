@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { Players } from '../../interface/players';
+import { Player } from '../../interface/player';
 import { Staff } from '../../interface/staffs';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-team',
-  imports: [CommonModule, RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule,FormsModule,RouterLink],
   templateUrl: './team.component.html',
   styleUrl: './team.component.css'
 })
 export class TeamComponent {
 
-   players: Players[] = [
+   players: Player[] = [
     {
       id: 1,
       name: 'Ebe Jasper',
@@ -99,7 +99,7 @@ export class TeamComponent {
 
   positions = ['All', 'Goalkeeper', 'Defender', 'Midfielder', 'Forward'];
 
-  get filteredPlayers(): Players[] {
+  get filteredPlayers(): Player[] {
     return this.players.filter((player) => {
       const matchesPosition =
         this.selectedPosition === 'All' || player.position === this.selectedPosition;
@@ -110,5 +110,8 @@ export class TeamComponent {
 
   setTab(tab: 'first-team' | 'coaching-staff' | 'academy') {
     this.activeTab = tab;
+  }
+   getPlayerById(id: number): Player | undefined {
+    return this.players.find((p) => p.id === id);
   }
 }
